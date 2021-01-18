@@ -8,4 +8,5 @@ add_executable(GBA_Again
         second/source/second.c
         multiple_code_files/source/main.c
         keys/source/key_demo.c
+        obj_demo/source/obj_demo.c
         )

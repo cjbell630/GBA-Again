@@ -45,6 +45,19 @@ It is often beneficial to have a variable of a certain length to start at an add
 
 5.4.6: But just remember this section for if you do run into trouble when copying and you can't find it in the code; it might save you a few hours of debugging.
 
+key_demo uses palette animation to change the button colors: learn how to do that
+
+As with all bitmaps, it is the programmer's responsibility (that means you!) that the bit-depth of the tiles that sprites and backgrounds correspond to the bit-depth of the data in VRAM. If this is out of sync, something like fig 7.2a may appear as fig 7.2c. Something like this is likely to happen sooner or later, because all graphics need to be converted outside of the system before use; one misplaced conversion option is all it takes.
+
+
+Table 8.4: GBA sprite sizes
+
+| shape\size |   00  |   01  |   10  |   11  |
+|------------|-------|-------|-------|-------|
+|     00     |  8x8  | 16x16 | 32x32 | 64x64 |
+|     01     | 16x8  | 32x8  | 32x16 | 64x32 |
+|     10     |  8x16 |  8x32 | 16x32 | 32x64 |
+
 # Left off at: #
 [5.4.5. Data alignment][1]
 
