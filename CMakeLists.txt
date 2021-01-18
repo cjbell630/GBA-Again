@@ -6,4 +6,5 @@ set(CMAKE_C_STANDARD 11)
 add_executable(GBA_Again
         first/source/first.c
         second/source/second.c
+        multiple_code_files/source/main.c
         )
