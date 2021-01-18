@@ -7,4 +7,5 @@ add_executable(GBA_Again
         first/source/first.c
         second/source/second.c
         multiple_code_files/source/main.c
+        keys/source/key_demo.c
         )

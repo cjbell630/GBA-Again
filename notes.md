@@ -41,6 +41,9 @@ Idea for project structure:
 |   +-- ... (contains viewable graphics and sound)
 ```
 
+It is often beneficial to have a variable of a certain length to start at an address divisible by that length. For example, a 32-bit variable likes to be put at addresses that are a multiple of 4.
+
+5.4.6: But just remember this section for if you do run into trouble when copying and you can't find it in the code; it might save you a few hours of debugging.
 
 # Left off at: #
 [5.4.5. Data alignment][1]
