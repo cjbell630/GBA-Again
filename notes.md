@@ -27,15 +27,19 @@ TLDR: The #include directive is only to be used for files with preprocessor dire
 
 
 Idea for project structure:
--main directory
-----source
---------main.c
-------------main method, sets up and invokes menu
---------menu.c (eventually invokes something in game.c)
---------game.c
-----resources
---------... (binary data for gba to use, gfx sound etc)
-----external (think of better name) (contains viewable graphics and sound)
+
+```
+.main directory
++-- source
+|   +-- main.c
+|   |   +-- main method, sets up and invokes menu
+|   +-- menu.c (eventually invokes something in game.c)
+|   +-- game.c
++-- resources
+|   +-- ... (binary data for gba to use, gfx sound etc)
++-- external (think of better name)
+|   +-- ... (contains viewable graphics and sound)
+```
 
 
 # Left off at: #
