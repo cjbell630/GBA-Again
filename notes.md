@@ -4,8 +4,8 @@ data arrays basically always should be const - this is because the default array
 Besides, it should be a const anyway bc im not gonna change it
 just a warning in case i for some reason do something really stupid sometime
 
-raw2c.exe and bin2s.exe convert raw and bin files to c files (llocated somewhere in devkitarm)
-usenti would be good sinze I'm basically making the files from scratch. located in documents>gba dev tools
+raw2c.exe and bin2s.exe convert raw and bin files to c files (located somewhere in devkitarm)
+usenti would be good since I'm basically making the files from scratch. located in documents>gba dev tools
 
 GBACrusher can be used to compress non-image files:
 http://www.coranac.com/files/gba/GBACrusher.zip
@@ -18,9 +18,12 @@ So please, do yourself a favor and do not #include every file you have into main
 Instead:
 Do separate files. Define functions in the source file (ex. util.c) as normal.
 At the top of the main file, or whatever file will be calling those functions, redeclare them with no brackets, just a semicolon.
+NOTE: I think the above line is only necessary for editing purposes. Maybe consider commenting it out each time!
 Cmake.txt does not need to be modified. The Makefile in multiple_code_files should work.
 CLion should be able to handle this without errors if you declare at the top. However, you won't be able to get documentation or source information.
 There might be a way to fix this, but even though the author of the tutorial said it was better in every way (and it seems it is), I can't find anything online where people don't use #include. Idk.
+
+TLDR: The #include directive is only to be used for files with preprocessor directives and declarations and type definitions. Oh, and inline functions. Those are okay there too.
 
 # Left off at: #
 [5.4.5. Data alignment][1]
