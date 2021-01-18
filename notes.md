@@ -25,6 +25,19 @@ There might be a way to fix this, but even though the author of the tutorial sai
 
 TLDR: The #include directive is only to be used for files with preprocessor directives and declarations and type definitions. Oh, and inline functions. Those are okay there too.
 
+
+Idea for project structure:
+-main directory
+----source
+--------main.c
+------------main method, sets up and invokes menu
+--------menu.c (eventually invokes something in game.c)
+--------game.c
+----resources
+--------... (binary data for gba to use, gfx sound etc)
+----external (think of better name) (contains viewable graphics and sound)
+
+
 # Left off at: #
 [5.4.5. Data alignment][1]
 
