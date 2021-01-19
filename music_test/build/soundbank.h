@@ -1,0 +1,10 @@
+#define SFX_AMBULANCE	0
+#define SFX_BOOM	1
+#define MOD_DEEP_FREEZE_BGM1	0
+#define MOD_EQUINOX	1
+#define MOD_EQUINOX	2
+#define MOD_FLATOUTLIES	3
+#define MOD_USR	4
+#define MSL_NSONGS	5
+#define MSL_NSAMPS	76
+#define MSL_BANKSIZE	81

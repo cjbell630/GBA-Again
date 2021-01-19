@@ -10,4 +10,6 @@ add_executable(GBA_Again
         keys/source/key_demo.c
         obj_demo/source/obj_demo.c
         my_obj_test/source/my_obj_test.c
+        music_test/source/MaxModExample.c
+        boy_scout_music/source/PlayBoyScout.c
         )
