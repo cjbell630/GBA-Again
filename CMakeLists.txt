@@ -9,4 +9,6 @@ add_executable(GBA_Again
         multiple_code_files/source/main.c
         keys/source/key_demo.c
         obj_demo/source/obj_demo.c
+        my_obj_test/source/my_obj_test.c
+        my_obj_test/include/isagbprn.c
         )

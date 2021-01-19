@@ -58,7 +58,7 @@ Table 8.4: GBA sprite sizes
 |     01     | 16x8  | 32x8  | 32x16 | 64x32 |
 |     10     |  8x16 |  8x32 | 16x32 | 32x64 |
 
-# Left off at: #
+# Left off at: #8.6.1. Setting up sprites
 [5.4.5. Data alignment][1]
 
 [1]: https://www.coranac.com/tonc/text/bitmaps.htm#ssec-data-align
