@@ -62,7 +62,7 @@ Got VBA Debug text working!!!!!!! IMPORTANT: WILL MESS UP IF FUNCTION CALLED ON 
 
 my own demo works: https://youtu.be/VevQ0N8ypmo
 
-# Left off at: #8.6.1. Setting up sprites
-[5.4.5. Data alignment][1]
+# Left off at: #
+[8.6.1. Setting up sprites][1]
 
-[1]: https://www.coranac.com/tonc/text/bitmaps.htm#ssec-data-align
+[1]: https://www.coranac.com/tonc/text/regobj.htm#ssec-demo-init
