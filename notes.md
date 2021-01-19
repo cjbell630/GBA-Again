@@ -62,6 +62,8 @@ Got VBA Debug text working!!!!!!! IMPORTANT: WILL MESS UP IF FUNCTION CALLED ON 
 
 my own demo works: https://youtu.be/VevQ0N8ypmo
 
+day 2: animation demo: https://youtu.be/bkg8WI60GrM
+
 # Left off at: #
 [8.6.1. Setting up sprites][1]
 

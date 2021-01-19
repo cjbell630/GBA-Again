@@ -11,5 +11,5 @@ add_executable(GBA_Again
         obj_demo/source/obj_demo.c
         my_obj_test/source/my_obj_test.c
         music_test/source/MaxModExample.c
-        boy_scout_music/source/PlayBoyScout.c
+        anim_test/source/anim_test.c
         )
