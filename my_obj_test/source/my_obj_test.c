@@ -36,12 +36,11 @@ void obj_test() {
     obj_set_pos(metr, x, y);
 
     int velocity = 0;
-    int acceleration = 0;
-    const int GRAVITY = 1; //positive bc up is down
+    const int GRAVITY = 1; //pos bc up is down
     const int GROUND_Y = 32;
-    const int JUMP_INIT_ACCEL = -10; //negative because up is down
+    const int JUMP_INIT_VELO = -10;//neg bc up is down
 
-    vbaprint("hello world");
+    vbaprint("hello world\n");
 
     while (1) {
         vid_vsync();
@@ -52,18 +51,19 @@ void obj_test() {
 
         // move up/down
         y += velocity;
-        if (y > GROUND_Y) { // if object is at or below ground level
+
+        if (y > GROUND_Y) { // if object is below ground level
             //TODO: stupid code bc allows the object to fall slightly below the "floor" before resetting
+            vbaprint("below ground level\n");
             y = GROUND_Y; //move it back up
             velocity = 0;
-            acceleration = 0; //stop movement
         } else if (y != GROUND_Y) { // if object is in the air
-            //apply gravity
-            acceleration += GRAVITY;
+            // apply gravity
+            velocity += GRAVITY;
         }
 
         //accelerate
-        velocity += acceleration;
+        //velocity += acceleration;
 
         // increment/decrement starting tile with R/L
         tid += bit_tribool(key_hit(-1), KI_R, KI_L);
@@ -72,11 +72,14 @@ void obj_test() {
         if (key_hit(KEY_A))    // horizontally
             // metr->attr1 ^= ATTR1_HFLIP;
             if (y == GROUND_Y) {
-                acceleration = JUMP_INIT_ACCEL;
-                velocity += acceleration;
+                velocity = JUMP_INIT_VELO;
             }
-        if (key_hit(KEY_B))    // vertically
-            metr->attr1 ^= ATTR1_VFLIP;
+        if (key_hit(KEY_B)) {    // vertically
+            y += GRAVITY;
+            vbaprint("did tiny hop thing. y: ");
+            vbaprint(y>GROUND_Y? "greater than" : y<GROUND_Y? "less than" : "equal to");
+            vbaprint("\n");
+        }
 
         // make it glow (via palette swapping)
         pb = key_is_down(KEY_SELECT) ? 1 : 0;

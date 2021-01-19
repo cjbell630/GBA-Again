@@ -58,6 +58,9 @@ Table 8.4: GBA sprite sizes
 |     01     | 16x8  | 32x8  | 32x16 | 64x32 |
 |     10     |  8x16 |  8x32 | 16x32 | 32x64 |
 
+Got VBA Debug text working!!!!!!! IMPORTANT: WILL MESS UP IF FUNCTION CALLED ON OG HARDWARE!!! MUST COMMENT OUT BEFORE!!!
+
+
 # Left off at: #8.6.1. Setting up sprites
 [5.4.5. Data alignment][1]
 
