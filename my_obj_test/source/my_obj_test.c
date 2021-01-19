@@ -40,7 +40,7 @@ void obj_test() {
     const int GROUND_Y = 32;
     const int JUMP_INIT_VELO = -10;//neg bc up is down
 
-    vbaprint("hello world\n");
+    //vbaprint("hello world\n");
 
     while (1) {
         vid_vsync();
@@ -54,7 +54,7 @@ void obj_test() {
 
         if (y > GROUND_Y) { // if object is below ground level
             //TODO: stupid code bc allows the object to fall slightly below the "floor" before resetting
-            vbaprint("below ground level\n");
+            //vbaprint("below ground level\n");
             y = GROUND_Y; //move it back up
             velocity = 0;
         } else if (y != GROUND_Y) { // if object is in the air
@@ -76,9 +76,9 @@ void obj_test() {
             }
         if (key_hit(KEY_B)) {    // vertically
             y += GRAVITY;
-            vbaprint("did tiny hop thing. y: ");
-            vbaprint(y>GROUND_Y? "greater than" : y<GROUND_Y? "less than" : "equal to");
-            vbaprint("\n");
+            //vbaprint("did tiny hop thing. y: ");
+            //vbaprint(y>GROUND_Y? "greater than" : y<GROUND_Y? "less than" : "equal to");
+            //vbaprint("\n");
         }
 
         // make it glow (via palette swapping)

@@ -60,6 +60,7 @@ Table 8.4: GBA sprite sizes
 
 Got VBA Debug text working!!!!!!! IMPORTANT: WILL MESS UP IF FUNCTION CALLED ON OG HARDWARE!!! MUST COMMENT OUT BEFORE!!!
 
+my own demo works: https://youtu.be/VevQ0N8ypmo
 
 # Left off at: #8.6.1. Setting up sprites
 [5.4.5. Data alignment][1]
