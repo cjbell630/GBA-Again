@@ -8,11 +8,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/toolbox.h"
-#include "../images/santa_full.h"
+#include "../images/santa.h"
+#include "../images/platform.h"
 #include "../include/debug.h"
 
 OBJ_ATTR obj_buffer[128];
 OBJ_AFFINE *obj_aff_buffer = (OBJ_AFFINE *) obj_buffer;
+int const NUM_TILES_IN_SANTA = 4;
 
 
 // testing a few sprite things
@@ -28,13 +30,23 @@ void obj_test() {
 
     OBJ_ATTR *santa = &obj_buffer[0];
     obj_set_attr(santa,
-                 ATTR0_SQUARE | ATTR0_8BPP,                // Square, regular sprite
-                 ATTR1_SIZE_32,                    // 64x64p,
+                 ATTR0_SQUARE | ATTR0_4BPP,                // Square, regular sprite
+                 ATTR1_SIZE_16,                    // 16x16p,
                  ATTR2_PALBANK(pb) | tid);        // palbank 0, tile 0
 
     // position sprite (redundant here; the _real_ position
     // is set further down
     obj_set_pos(santa, x, y);
+
+    OBJ_ATTR *platform = &obj_buffer[NUM_TILES_IN_SANTA];
+    obj_set_attr(platform,
+                 ATTR0_WIDE | ATTR0_4BPP,                // Square, regular sprite
+                 ATTR1_SIZE_32x8,                    // 16x16p,
+                 ATTR2_PALBANK(1) | NUM_TILES_IN_SANTA);        // palbank 1, tile 0
+
+    // position sprite (redundant here; the _real_ position
+    // is set further down
+    obj_set_pos(platform, x, y+16);
 
     int velocity = 0;
     const int GRAVITY = 1; //pos bc up is down
@@ -51,13 +63,13 @@ void obj_test() {
         x += 2 * key_tri_horz();
 
         if (key_released(KEY_LEFT) || key_released(KEY_RIGHT)) {
-            tid = 0; //TODO: doesnt look right if moving in air
+            tid = 0;
             if (key_released(KEY_LEFT)) {
                 santa->attr1 ^= ATTR1_HFLIP;
             }
         }
         if (key_hit(KEY_LEFT) || key_hit(KEY_RIGHT)) {
-            tid = 64;
+            //tid = 8; //TODO: uncomment once sprites are there
             if (key_hit(KEY_LEFT)) {
                 santa->attr1 ^= ATTR1_HFLIP;
             }
@@ -71,8 +83,12 @@ void obj_test() {
             //vbaprint("below ground level\n");
             y = GROUND_Y; //move it back up
             velocity = 0;
-            tid = 64 * abs(key_tri_horz()); // sets the sprite to 0 if no directions pressed, 64 otherwise
-            //TODO: see below where it says tid = 32
+
+            //TODO: uncomment once sprites are there
+            //tid = 8 * abs(key_tri_horz()); // sets the sprite to 0 if no directions pressed, 8 otherwise
+
+
+            //TODO: see below where it says tid = 4
         } else if (y != GROUND_Y) { // if object is in the air
             // apply gravity
             velocity += GRAVITY;
@@ -89,11 +105,11 @@ void obj_test() {
             // santa->attr1 ^= ATTR1_HFLIP;
             if (y == GROUND_Y) {
                 velocity = JUMP_INIT_VELO;
-                tid = 32; //TODO: put this 32 (num of tiles in a single santa sprite) in some var somewhere
+                // tid = 4; //TODO: uncomment once sprites are there
             }
         if (key_hit(KEY_B)) {
             //hurt animation test
-            tid = 96;
+            tid = 12;
             int timer = 0;
             const int WIGGLE_HEIGHT = 3; // height at which to wiggle at
             const int WIGGLE_DURATION = 60;
@@ -112,7 +128,7 @@ void obj_test() {
                 santa->attr2 = ATTR2_BUILD(tid, pb, 0);
                 obj_set_pos(santa, x, y);
 
-                oam_copy(oam_mem, obj_buffer, 1);    // only need to update one
+                oam_copy(oam_mem, obj_buffer, 2);    // only need to update one
                 timer++;
             }
             tid = 0; //TODO: if hit while jumping this wont work
@@ -132,15 +148,20 @@ void obj_test() {
         santa->attr2 = ATTR2_BUILD(tid, pb, 0);
         obj_set_pos(santa, x, y);
 
-        oam_copy(oam_mem, obj_buffer, 1);    // only need to update one
+        oam_copy(oam_mem, obj_buffer, 128);    // only need to update one
     }
 }
 
 int main() {
-    // Places the glyphs of a 4bpp boxed santa sprite
+    // Places the glyphs of a 8bpp boxed santa sprite
     //   into LOW obj memory (cbb == 4)
-    memcpy(&tile_mem[4][0], santa_fullTiles, santa_fullTilesLen);
-    memcpy(pal_obj_mem, santa_fullPal, santa_fullPalLen);
+    memcpy(&tile_mem[4][0], santaTiles, santaTilesLen);
+    memcpy(&pal_obj_mem[0], santaPal, santaPalLen);
+
+    // Places the glyphs of a 8bpp boxed platform sprite
+    //   into LOW obj memory (cbb == 4)
+    memcpy(&tile_mem[4][NUM_TILES_IN_SANTA], platformTiles, platformTilesLen);
+    memcpy(&pal_obj_mem[16], platformPal, platformPalLen);
 
     // inits the oam with 128 objects [from me]
     oam_init(obj_buffer, 128);

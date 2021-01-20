@@ -14,7 +14,7 @@ PATH := $(DEVKITARM)/bin:$(PATH)
 PROJ    := anim_test
 TITLE   := $(PROJ)
 
-COBJS   := source/anim_test.o include/toolbox.o images/santa_full.o
+COBJS   := source/anim_test.o include/toolbox.o images/santa.o images/platform.o
 
 SOBJS   := include/debug.o
 
