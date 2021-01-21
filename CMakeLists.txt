@@ -12,4 +12,5 @@ add_executable(GBA_Again
         my_obj_test/source/my_obj_test.c
         music_test/source/MaxModExample.c
         anim_test/source/anim_test.c
+        bgscroll_test/source/bgscroll_test.c
         )
